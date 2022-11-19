@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body {
+      margin:0;
+      overflow:hidden;
+    }
+  </style>
+</head>
+
+<body>
+  <canvas class="myCanvas">
+  </canvas>
+  <script>
+    function degToRad(degrees) {
+      return degrees * Math.PI / 180;
+    }
+
+    const canvas = document.querySelector('.myCanvas');
+    const width = canvas.width = window.innerWidth;
+    const height = canvas.height = window.innerHeight;
+    const ctx = canvas.getContext('2d');
+
+    ctx.beginPath();
+    ctx.moveTo(50,50);
+    ctx.lineTo(150,50);
+    ctx.moveTo(50,100);
+    ctx.lineTo(150,100);
+    ctx.moveTo(150,50);
+    ctx.lineTo(150,100);
+    ctx.moveTo(50,50);
+    ctx.lineTo(50,100);
+    ctx.stroke();
+    // ctx.fillStyle = 'rgb(0,0,0)';
+    // ctx.fillRect(0, 0, 200, 200);
+
+
+    // ctx.strokeStyle='rgb(0,0,0)';
+    // ctx.strokeRect(0, 200, 200, 200);
+
+    // ctx.beginPath();
+    // ctx.moveTo(50, 50);
+    // ctx.lineTo(150, 50)
+    // ctx.lineTo(150, 80)
+    // ctx.fill();
+    // const triHeight = 50 * Math.tan(degToRad(60));
+    // ctx.lineTo(100, 50 + triHeight);
+    // ctx.lineTo(50, 50);
+    // ctx.fill();
+
+    // ctx.strokeStyle = 'rgb(0,0,0)';
+    // ctx.stroke();
+
+    // ctx.fillStyle = "yellow";
+    // ctx.beginPath();
+    // ctx.arc(200, 106, 50, degToRad(0), degToRad(180), false);
+    // ctx.stroke();
+
+
+    // ctx.translate(width / 2, height / 2);
+
+    // function degToRad(degrees) {
+    //   return degrees * Math.PI / 180;
+    // };
+
+    // function rand(min, max) {
+    //   return Math.floor(Math.random() * (max - min + 1)) + (min);
+    // }
+
+    // let length = 250;
+    // let moveOffset = 20;
+
+    // for (let i = 0; i < length; i++) {
+    //   ctx.fillStyle = `rgba(${255 - length},0,${255 - length},0.9)`;
+    //   ctx.beginPath();
+    //   ctx.moveTo(moveOffset, moveOffset);
+    //   ctx.lineTo(moveOffset + length, moveOffset);
+    //   const triHeight = length / 2 * Math.tan(degToRad(60));
+    //   ctx.lineTo(moveOffset + (length / 2), moveOffset + triHeight);
+    //   ctx.lineTo(moveOffset, moveOffset);
+    //   ctx.fill();
+
+    //   length--;
+    //   moveOffset += 0.7;
+    //   ctx.rotate(degToRad(5));
+    // }
+  </script>
+</body>
+
+</html>

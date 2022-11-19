@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link rel="stylesheet" href="https://api.mqcdn.com/sdk/mapquest-js/v1.3.2/mapquest.css" />
+	<style>
+		#map {
+			width: 600px;
+			height: 600px;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Simple Mapquest example</h1>
+
+	<div id="map"></div>
+	<script src="https://api.mqcdn.com/sdk/mapquest-js/v1.3.2/mapquest.js"></script>
+	<script>
+		L.mapquest.key = 'NG4TVvTURgfK1wbkvaaNmEUQGYFZfTfC';
+
+		// 'map' refers to a <div> element with the ID map
+		const map = L.mapquest.map('map', {
+			center: [53.480759, -2.242631],
+			// 1. change 'map' to 'hybrid', try other type of map
+			layers: L.mapquest.tileLayer('hybrid'),
+			zoom: 12
+		});
+
+		// 2. Add control
+		map.addControl(L.mapquest.control());
+
+		let searchControl = L.mapquest.searchControl({
+			className: '',
+			hoverMarker: {
+				icon: 'marker',
+				iconOptions: {
+					size: 'sm',
+					primaryColor: '#333333',
+					secondaryColor: '#333333'
+				}
+			},
+			search: {
+				sort: 'relevance',
+				pageSize: 20
+			},
+			searchInput: {
+				searchAheadOptions: {
+					limit: 6,
+					collection: 'address,adminArea,airport,poi,category,franchise'
+				},
+				compactResults: true,
+				placeholderText: 'Search',
+				clearTitle: 'Clear search'
+			},
+			searchLayer: {
+				buffer: 256,
+				collisionMargin: 2,
+				marker: {
+					icon: 'via',
+					iconOptions: {
+						primaryColor: '#ffffff',
+						secondaryColor: '#333333',
+						size: 'lg'
+					},
+					popupEnabled: true
+				},
+				paddingTopLeft: [420, 20],
+				paddingBottomRight: [20, 20],
+				searchResponse: {},
+				updateResultsOnMapMove: true
+			}
+		}).addTo(map);
+		// 3. Add icon
+		L.marker([53.480759, -2.242631], {
+			icon: L.mapquest.icons.marker({
+				primaryColor: '#22407F',
+				secondaryColor: '#3B5998',
+				shadow: true,
+				size: 'md',
+				symbol: 'A'
+			})
+		})
+			.bindPopup('This is Manchester!')
+			.addTo(map);
+	</script>
+</body>
+
+</html>
